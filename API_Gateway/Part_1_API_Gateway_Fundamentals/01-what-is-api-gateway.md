@@ -665,27 +665,27 @@ Client
 
 Remember these points:
 
-API = a contract/interface that allows applications to communicate.
-Amazon API Gateway = AWS service for creating and managing APIs.
-API Gateway acts as the front door to backend services.
-API Gateway can handle:
-Routing
-Authentication/authorization
-Traffic control
-API management
-Monitoring
-API Gateway is not your application's business logic.
-The backend performs the actual application work.
-A common architecture is:
-Client
-  ↓
-API Gateway
-  ↓
-Backend
-API Gateway provides both:
-REST APIs
-HTTP APIs
-Regional endpoint means the API is served from a particular AWS Region.
+1. API = a contract/interface that allows applications to communicate.
+2. Amazon API Gateway = AWS service for creating and managing APIs.
+3. API Gateway acts as the front door to backend services.
+4. API Gateway can handle:
+    Routing
+    Authentication/authorization
+    Traffic control
+    API management
+    Monitoring
+5. API Gateway is not your application's business logic.
+6. The backend performs the actual application work.
+7. A common architecture is:
+    Client
+    ↓
+    API Gateway
+    ↓
+    Backend
+8. API Gateway provides both:
+    REST APIs
+    HTTP APIs
+9. Regional endpoint means the API is served from a particular AWS Region.
 
 One-line definition
 
