@@ -375,19 +375,3 @@ Client
 ```
 
 ---
-
-## Concept Status
-
-- [x] What is a Request?
-- [x] Request components
-- [x] What is a Response?
-- [x] Response components
-- [x] Request/Response flow
-- [x] Request body
-- [x] Important status codes
-- [x] API Gateway's role
-- [x] Key takeaways
-
----
-
-**Next:** Part 1 → Concept 4 — **Path Parameters, Query Parameters and Headers**
