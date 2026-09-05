@@ -133,15 +133,3 @@ Think:
 - For REST APIs, Regional and Edge-Optimized are different endpoint types.
 
 ---
-
-## Part 1 Progress
-
-Core API Gateway Fundamentals covered:
-
-1. What is API Gateway?
-2. API, Resource, Method and Route
-3. Request & Response
-4. Path Parameters, Query Parameters and Headers
-5. HTTP Status Codes
-6. REST API vs HTTP API
-7. Regional Endpoint
