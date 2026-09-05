@@ -2,13 +2,17 @@
 
 **Goal:** Understand what API Gateway is, why we need it, what role it plays between a client and a backend, and the basic terminology around it.
 
+---
+
 ## 1. What Is an API?
 
 API stands for **Application Programming Interface**.
 
 An API is a defined way for one application to communicate with another application or service.
 
-For example, imagine a mobile banking application. When you open your account and see your balance, the mobile app does not directly access the bank's database.
+For example, imagine a mobile banking application.
+
+When you open your account and see your balance, the mobile app does not directly access the bank's database.
 
 Instead, the request flows through an API:
 
@@ -54,15 +58,17 @@ The response could be:
 }
 ```
 
-So, an API acts as a contract between the client and the backend.
+So, an API acts as a **contract between the client and the backend**.
 
-## 2. What Is Amazon API Gateway?
+---
+
+# 2. What Is Amazon API Gateway?
 
 Amazon API Gateway is an AWS service that allows you to create, publish, secure, manage, monitor, and expose APIs.
 
 In simple terms:
 
-> API Gateway is the front door through which clients can communicate with your backend services.
+> **API Gateway is the front door through which clients can communicate with your backend services.**
 
 Instead of allowing clients to directly access your backend, you can put API Gateway in front of it.
 
@@ -90,9 +96,13 @@ API Gateway
      +----> Container/application
 ```
 
-## 3. Why Do We Need API Gateway?
+---
 
-Imagine you have a Lambda function that retrieves user information. Without API Gateway, you would need some other mechanism for clients to invoke that backend.
+# 3. Why Do We Need API Gateway?
+
+Imagine you have a Lambda function that retrieves user information.
+
+Without API Gateway, you would need some other mechanism for clients to invoke that backend.
 
 With API Gateway:
 
@@ -111,7 +121,9 @@ Lambda
 Response
 ```
 
-The client does not need to know how the backend works. It only needs to know the API endpoint:
+The client does not need to know how the backend works.
+
+It only needs to know the API endpoint:
 
 ```text
 https://api.example.com/users/101
@@ -131,11 +143,13 @@ API Gateway
 Application
 ```
 
-## 4. What Problems Does API Gateway Solve?
+---
+
+# 4. What Problems Does API Gateway Solve?
 
 API Gateway provides several important capabilities around an API.
 
-### 1. API Exposure
+## 4.1 API Exposure
 
 It gives clients an HTTP/HTTPS endpoint.
 
@@ -145,7 +159,9 @@ Example:
 https://abc123.execute-api.us-east-1.amazonaws.com/users
 ```
 
-### 2. Routing
+---
+
+## 4.2 Routing
 
 API Gateway determines where a request should go.
 
@@ -166,7 +182,9 @@ POST /users
      Lambda C
 ```
 
-### 3. Authentication and Authorization
+---
+
+## 4.3 Authentication and Authorization
 
 API Gateway can work with mechanisms such as:
 
@@ -177,7 +195,9 @@ API Gateway can work with mechanisms such as:
 
 This lets you control who is allowed to access your API.
 
-### 4. Traffic Control
+---
+
+## 4.4 Traffic Control
 
 API Gateway can help control API traffic using mechanisms such as:
 
@@ -187,7 +207,9 @@ API Gateway can help control API traffic using mechanisms such as:
 
 This helps prevent clients from overwhelming your API.
 
-### 5. Security
+---
+
+## 4.5 Security
 
 API Gateway can be combined with other AWS services to protect APIs.
 
@@ -205,7 +227,9 @@ API Gateway
 Backend
 ```
 
-### 6. Monitoring
+---
+
+## 4.6 Monitoring
 
 API Gateway publishes metrics that allow you to understand API behavior, including:
 
@@ -216,9 +240,11 @@ API Gateway publishes metrics that allow you to understand API behavior, includi
 - Integration latency
 - Throttled requests
 
-We will learn monitoring separately in much greater detail later.
+> We will learn monitoring separately in much greater detail later.
 
-## 5. API Gateway Is Not the Backend
+---
+
+# 5. API Gateway Is Not the Backend
 
 This is a very important concept.
 
@@ -261,11 +287,15 @@ The backend is responsible for business logic, such as:
 
 So think of it this way:
 
-> API Gateway manages the API. Your backend performs the actual application work.
+> **API Gateway manages the API. Your backend performs the actual application work.**
 
-## 6. Simple Real-World Example
+---
 
-Imagine an e-commerce application. A customer wants to retrieve their orders.
+# 6. Simple Real-World Example
+
+Imagine an e-commerce application.
+
+A customer wants to retrieve their orders.
 
 The frontend sends:
 
@@ -310,7 +340,9 @@ The backend retrieves the orders and returns:
 
 API Gateway then returns that response to the client.
 
-## 7. API Gateway Request Flow
+---
+
+# 7. API Gateway Request Flow
 
 The basic flow to remember is:
 
@@ -341,10 +373,13 @@ A more simplified version:
 
 ```text
 Client
+  |
   v
 API Gateway
+  |
   v
 Backend
+  |
   v
 Database
 ```
@@ -353,25 +388,36 @@ Then the response returns in the opposite direction:
 
 ```text
 Database
+  |
   v
 Backend
+  |
   v
 API Gateway
+  |
   v
 Client
 ```
 
-## 8. Important API Gateway Terminology
+---
+
+# 8. Important API Gateway Terminology
 
 We will learn these properly in the upcoming concepts, but you should know the basic vocabulary.
 
-### API
+## API
 
 The API represents the interface exposed to clients.
 
-Example: `User Management API`
+Example:
 
-### Resource or Path
+```text
+User Management API
+```
+
+---
+
+## Resource or Path
 
 Represents a URL path in a REST API.
 
@@ -382,7 +428,9 @@ Examples:
 /users/{id}
 ```
 
-### Method
+---
+
+## Method
 
 Defines the HTTP operation.
 
@@ -402,7 +450,9 @@ For example:
 GET /users
 ```
 
-### Route
+---
+
+## Route
 
 HTTP APIs commonly use the concept of a route.
 
@@ -416,9 +466,11 @@ GET /users/{id}
 
 A route combines:
 
-> HTTP method + path
+> **HTTP method + path**
 
-### Integration
+---
+
+## Integration
 
 An integration defines what API Gateway sends the request to.
 
@@ -433,19 +485,25 @@ Lambda
 
 Lambda is the integration.
 
-### Stage
+---
+
+## Stage
 
 A stage represents a deployment environment or version of an API.
 
 For example:
 
+```text
 dev
 test
 prod
+```
 
 We will study stages and deployments separately.
 
-### Endpoint
+---
+
+## Endpoint
 
 The URL through which clients access the API.
 
@@ -455,17 +513,21 @@ Example:
 https://abc123.execute-api.us-east-1.amazonaws.com
 ```
 
-## 9. REST API vs HTTP API
+---
+
+# 9. REST API vs HTTP API
 
 API Gateway provides two major API types:
 
+```text
 Amazon API Gateway
        |
        +---- REST API
        |
        +---- HTTP API
+```
 
-### REST API
+## REST API
 
 The more feature-rich API Gateway option.
 
@@ -476,7 +538,9 @@ It supports advanced capabilities such as:
 - More advanced API management features
 - REST-specific configuration
 
-### HTTP API
+---
+
+## HTTP API
 
 A simpler and generally lower-cost option designed for many common HTTP API use cases.
 
@@ -495,43 +559,50 @@ Don't worry about memorizing every difference yet.
 
 For now remember:
 
-REST API = more features and advanced API management
+> **REST API = more features and advanced API management**
 
-HTTP API = simpler, lower-cost API option for many common use cases
+> **HTTP API = simpler, lower-cost API option for many common use cases**
 
 We'll compare them properly when we reach API Gateway configuration.
 
-## 10. Regional Endpoint
+---
+
+# 10. Regional Endpoint
 
 API Gateway APIs can be exposed using different endpoint types depending on the API type and configuration.
 
-One important concept is a Regional endpoint.
+One important concept is a **Regional endpoint**.
 
 A Regional API is served from an AWS Region.
 
 For example:
 
+```text
 AWS Region
 us-east-1
     |
-    ↓
+    v
 API Gateway
     |
-    ↓
+    v
 https://xxxxx.execute-api.us-east-1.amazonaws.com
+```
 
 This means the API is associated with a specific AWS Region.
 
 For the learning labs we've been doing, we've primarily worked with Regional APIs.
 
-## 11. API Gateway vs Application Load Balancer
+---
+
+# 11. API Gateway vs Application Load Balancer
 
 These services can sometimes appear similar because both can receive HTTP traffic, but their purposes are different.
 
-### API Gateway
+## API Gateway
 
 Primarily focuses on API management:
 
+```text
 API
  |
  +-- Authentication
@@ -541,14 +612,16 @@ API
  +-- Usage plans
  +-- Routing
  +-- API management
+```
 
-### Application Load Balancer
+## Application Load Balancer
 
 Primarily focuses on distributing application traffic:
 
+```text
 Users
   |
-  ↓
+  v
 ALB
   |
   +---- EC2
@@ -556,42 +629,50 @@ ALB
   +---- EC2
   |
   +---- Container
+```
 
 You can even use both in an architecture when appropriate.
 
-## 12. A Simple Mental Model
+---
+
+# 12. A Simple Mental Model
 
 Whenever you see:
 
+```text
 Client → API Gateway → Backend
+```
 
 think:
 
-Client
+### Client
 
-"I want something from the application."
+> "I want something from the application."
 
-API Gateway
+### API Gateway
 
-"I'll receive the request, check it, determine where it goes, and manage the API behavior."
+> "I'll receive the request, check it, determine where it goes, and manage the API behavior."
 
-Backend
+### Backend
 
-"I'll actually perform the application operation."
+> "I'll actually perform the application operation."
 
 That mental model will make the rest of API Gateway much easier.
 
-## 13. Example Architecture
+---
+
+# 13. Example Architecture
 
 A basic serverless API could look like:
 
+```text
                  ┌──────────────┐
                  │    Client    │
                  │ Web / Mobile │
                  └──────┬───────┘
                         │
                         │ HTTPS
-                        ▼
+                        v
               ┌───────────────────┐
               │   API Gateway     │
               │                   │
@@ -602,91 +683,151 @@ A basic serverless API could look like:
               └─────────┬─────────┘
                         │
                         │ Integration
-                        ▼
+                        v
                 ┌───────────────┐
                 │    Backend    │
                 │    Lambda     │
                 └───────┬───────┘
                         │
-                        ▼
+                        v
                     Data Store
+```
 
-Note: The data store is shown only to illustrate the architecture. We will learn database services separately.
+> **Note:** The data store is shown only to illustrate the architecture. We will learn database services separately.
 
-## 14. What Happens When a Request Arrives?
+---
+
+# 14. What Happens When a Request Arrives?
 
 Suppose the client sends:
 
+```http
 GET /users/101
+```
 
 Conceptually:
 
-Step 1 — Client sends request
+### Step 1 — Client Sends Request
+
+```text
 GET /users/101
-Step 2 — API Gateway receives it
+```
+
+---
+
+### Step 2 — API Gateway Receives It
 
 API Gateway identifies:
 
+```text
 Method = GET
 Path   = /users/101
-Step 3 — API Gateway determines the route
+```
+
+---
+
+### Step 3 — API Gateway Determines the Route
 
 For example:
 
+```text
 GET /users/{id}
+```
 
 matches:
 
+```text
 GET /users/101
-Step 4 — API Gateway invokes the integration
+```
+
+---
+
+### Step 4 — API Gateway Invokes the Integration
 
 For example:
 
+```text
 Lambda
-Step 5 — Backend processes the request
+```
+
+---
+
+### Step 5 — Backend Processes the Request
 
 The backend performs the required operation.
-Step 6 — Backend returns a response
+
+---
+
+### Step 6 — Backend Returns a Response
 
 For example:
 
+```json
 {
   "id": 101,
   "name": "John"
 }
-Step 7 — API Gateway returns the response
-Lambda
-  ↓
-API Gateway
-  ↓
-Client
+```
 
-## 15. Key Takeaways
+---
+
+### Step 7 — API Gateway Returns the Response
+
+```text
+Lambda
+  |
+  v
+API Gateway
+  |
+  v
+Client
+```
+
+---
+
+# 15. Key Takeaways
 
 Remember these points:
 
-1. API = a contract/interface that allows applications to communicate.
-2. Amazon API Gateway = AWS service for creating and managing APIs.
-3. API Gateway acts as the front door to backend services.
+1. **API = a contract/interface that allows applications to communicate.**
+
+2. **Amazon API Gateway = AWS service for creating and managing APIs.**
+
+3. API Gateway acts as the **front door to backend services**.
+
 4. API Gateway can handle:
-    Routing
-    Authentication/authorization
-    Traffic control
-    API management
-    Monitoring
-5. API Gateway is not your application's business logic.
+   - Routing
+   - Authentication/authorization
+   - Traffic control
+   - API management
+   - Monitoring
+
+5. **API Gateway is not your application's business logic.**
+
 6. The backend performs the actual application work.
+
 7. A common architecture is:
-    Client
-    ↓
-    API Gateway
-    ↓
-    Backend
+
+```text
+Client
+  |
+  v
+API Gateway
+  |
+  v
+Backend
+```
+
 8. API Gateway provides both:
-    REST APIs
-    HTTP APIs
-9. Regional endpoint means the API is served from a particular AWS Region.
+   - **REST APIs**
+   - **HTTP APIs**
 
-One-line definition
+9. A **Regional endpoint** means the API is served from a particular AWS Region.
 
-Amazon API Gateway is a managed AWS service that acts as the front door for applications by exposing APIs, routing client requests to backend services, and providing capabilities such as authorization, throttling, API management, and monitoring.
+---
+
+# One-Line Definition
+
+> **Amazon API Gateway is a managed AWS service that acts as the front door for applications by exposing APIs, routing client requests to backend services, and providing capabilities such as authorization, throttling, API management, and monitoring.**
+
+---
